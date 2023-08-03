@@ -348,14 +348,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nesting-and-configurations">Nesting and Configurations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#driving-data">Driving Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-model">Global Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5">ERA5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barra2">BARRA2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#files-on-disk">Files on Disk</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-fields">Output Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nesting-configurations">Nesting Configurations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolutions">Resolutions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configs">Configs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-fields-and-science-configuration">Output Fields and Science Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
             </nav>
@@ -368,26 +373,116 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="running-the-model">
+  <section class="tex2jax_ignore mathjax_ignore" id="running-the-model">
 <h1>Running the Model<a class="headerlink" href="#running-the-model" title="Permalink to this heading">#</a></h1>
-<section id="nesting-and-configurations">
-<h2>Nesting and Configurations<a class="headerlink" href="#nesting-and-configurations" title="Permalink to this heading">#</a></h2>
+<p>The Regional Nesting Suite <strong>u-by395</strong> is used to run one or more regional models nested inside each other, optionally with a global driving model. Check out the suite with <code class="docutils literal notranslate"><span class="pre">rosie</span> <span class="pre">checkout</span></code> and open it in <code class="docutils literal notranslate"><span class="pre">rose</span> <span class="pre">edit</span></code>. Make sure to set the SITE to <code class="docutils literal notranslate"><span class="pre">nci-gadi</span></code> in ‘General Run Options’.</p>
+<section id="driving-data">
+<h2>Driving Data<a class="headerlink" href="#driving-data" title="Permalink to this heading">#</a></h2>
+<p>There are several ways to drive the RNS. Not all options are enabled at NCI, talk to your local support if you would like to use a method that’s not been ported.</p>
+<p>At NCI, you can choose one of:</p>
+<ol class="arabic simple">
+<li><p>Run a full global model</p></li>
+<li><p>Run from ERA5</p></li>
+<li><p>Run from a start dump and LBC files from a previous run</p></li>
+</ol>
+<section id="global-model">
+<h3>Global Model<a class="headerlink" href="#global-model" title="Permalink to this heading">#</a></h3>
+<p>To drive with a full global model choose “UM Global Model”, “Re-run from analyses on disk”. You will need to provide an initial conditions file.</p>
+<p><img alt="driving model global settings" src="_images/driving-model-global.png" /></p>
+</section>
+<section id="era5">
+<h3>ERA5<a class="headerlink" href="#era5" title="Permalink to this heading">#</a></h3>
+<p>NCI have a mirror of ECMWF’s ERA5 dataset. To drive the model with this data choose “ECMWF forecast fields”, “EC analysis/re-analysis”. You will need to create a set of ancillaries to convert the ERA5 data to UM format. These can be created with the RAS as an additional domain, they should be at 0.1 degree resolution and cover an area ~ 10 gridpoints larger than your target domain.</p>
+<p>Settings:</p>
+<ul class="simple">
+<li><p><strong>NCI_ERA5GRIB</strong>: When true, runs a task to convert the ERA5 archive data to GRIB format readable by the model. Can be disabled if this has been done previously for this domain and time period</p></li>
+<li><p><strong>dm_ec_lam_ancil_dir</strong>: UM ancillary files for the GRIB to UM conversion</p></li>
+<li><p><strong>dm_ec_ic_lbc_dir</strong>: Directory to store GRIB format files</p></li>
+</ul>
+<p><img alt="driving model era5 settings" src="_images/driving-model-era5.png" /></p>
+</section>
+<section id="files-on-disk">
+<h3>Files on Disk<a class="headerlink" href="#files-on-disk" title="Permalink to this heading">#</a></h3>
+<p>To drive the model from an arbitrary previous UM run, provided it saved LBC data, choose “UM global model”, “use start dumps and LBC creation files on disk”. The files don’t need to be created from a global model, e.g. you could use this option with archived BARRA initial and boundary conditions.</p>
+<p>Settings:</p>
+<ul class="simple">
+<li><p><strong>dm_ic_file</strong>: Initial conditions</p></li>
+<li><p><strong>dm_lbc_files</strong>: Lateral boundary conditions</p></li>
+</ul>
+<p>These paths can include date codes like YYYYmmdd to automatically use the run’s start date.</p>
+<p><img alt="driving model file settings" src="_images/driving-model-files.png" /></p>
+</section>
+</section>
+<section id="nesting-configurations">
+<h2>Nesting Configurations<a class="headerlink" href="#nesting-configurations" title="Permalink to this heading">#</a></h2>
+<p>Nest configuration works similar to the Regional Ancillary Suite, however there is now one more layer - configs.</p>
+<section id="resolutions">
+<h3>Resolutions<a class="headerlink" href="#resolutions" title="Permalink to this heading">#</a></h3>
+<p>Resolutions get the grid settings from the RAS output data.</p>
+<p>Settings:</p>
+<ul class="simple">
+<li><p><strong>levset</strong>: Vertical levels, must match RAS data</p></li>
+<li><p><strong>runlen</strong>: Forecast length</p></li>
+<li><p><strong>ancil_dir</strong>: Directory with ancils from RAS</p></li>
+</ul>
+<p><img alt="nest resolution" src="_images/nest-resolution.png" /></p>
+</section>
+<section id="configs">
+<h3>Configs<a class="headerlink" href="#configs" title="Permalink to this heading">#</a></h3>
+<p>Configs let you run multiple different science configurations at the same domain to test science changes.</p>
+<p>Settings:</p>
+<ul class="simple">
+<li><p><strong>config</strong>: Science configuration, e.g. RAL3p1</p></li>
+<li><p><strong>stashpack</strong>: Preset output fields, e.g for RES</p></li>
+<li><p><strong>dt</strong>, <strong>raddt</strong>: Timestep, see help page for guidance based on resolution</p></li>
+<li><p><strong>lbc_freq</strong>: Frequency to read in (first number) and write out (second number) lateral boundary conditions</p></li>
+<li><p><strong>ic_lbc_src</strong>: Resolution, Config that will drive this nest (not available for the first config)</p></li>
+</ul>
+<p><img alt="nest config" src="_images/nest-config.png" /></p>
+</section>
 </section>
 <section id="cycles">
 <h2>Cycles<a class="headerlink" href="#cycles" title="Permalink to this heading">#</a></h2>
+<p>Date settings for the RNS are set in the “Cycling Options” panel</p>
+<p>The RAS can be run in either re-initialised mode or free-running mode. In re-initialised mode the driving model and all nests will be restarted every <code class="docutils literal notranslate"><span class="pre">CYCLE_INT_HR</span></code> hours from a new analysis. In free-running mode each nest’s outputs from the previous cycle are fed in to the next cycle.</p>
+<p>The amount of time each nest runs for is set at the Resolution level as <code class="docutils literal notranslate"><span class="pre">rgNN_rsNN_mNN_runlen</span></code>. When in free-running mode this should match <code class="docutils literal notranslate"><span class="pre">CYCLE_INT_HR</span></code>, and each nest should not have a longer runlen than its driving model.</p>
+<p><img alt="cycling options" src="_images/cycling.png" /></p>
 </section>
-<section id="driving-data">
-<h2>Driving Data<a class="headerlink" href="#driving-data" title="Permalink to this heading">#</a></h2>
-<section id="era5">
-<h3>ERA5<a class="headerlink" href="#era5" title="Permalink to this heading">#</a></h3>
-<p>ECMWF’s ERA5</p>
-</section>
-<section id="barra2">
-<h3>BARRA2<a class="headerlink" href="#barra2" title="Permalink to this heading">#</a></h3>
-</section>
-</section>
-<section id="output-fields">
-<h2>Output Fields<a class="headerlink" href="#output-fields" title="Permalink to this heading">#</a></h2>
+<section id="output-fields-and-science-configuration">
+<h2>Output Fields and Science Configuration<a class="headerlink" href="#output-fields-and-science-configuration" title="Permalink to this heading">#</a></h2>
+<p>General science options can be set under the “um” section on the left. Take note that the Config’s science configuration may override the settings in the user interface, hover over the hand icon to see what options override that setting</p>
+<p><img alt="science options" src="_images/science.png" /></p>
+<p>Likewise output fields use the standard STASH configuration - each field needs a domain processing (dom), a time processing (tim), and an output (use).</p>
+<p>Presets are:</p>
+<ul class="simple">
+<li><p>Domains</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">atm_soil</span></code>: soil levels</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">diag</span></code>: single level</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dpft</span></code>, <code class="docutils literal notranslate"><span class="pre">dtyle</span></code>: land/vegetation types</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p850_200</span></code>: 5 pressure levels from 850 to 200 hPa</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plevs</span></code>: 22 pressure levels from 1000 to 30 hPa</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ro_1_80</span></code>: rho levels 1 to 80</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">th_0_40</span></code>, <code class="docutils literal notranslate"><span class="pre">th_1_60</span></code>, <code class="docutils literal notranslate"><span class="pre">th_1_80</span></code>, <code class="docutils literal notranslate"><span class="pre">th_1</span></code>: theta levels 0 to 40, 1 to 60, 1 to 80, 1</p></li>
+</ul>
+</li>
+<li><p>Times</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1hr</span></code>: Hourly instantaneous</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t1hr_mn</span></code>: Hourly mean</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">t3hr</span></code>: 3-hourly instantaneous</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tacc3hr</span></code>: 3-hourly accumulation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tacc6hr</span></code>: 6-hourly accumulation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ts0</span></code>: Timestep 0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ts1</span></code>: Timestep 1</p></li>
+</ul>
+</li>
+<li><p>Usage</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">60_diags</span></code>: Output file <code class="docutils literal notranslate"><span class="pre">$DATAM/${RUNID}a_pa%N</span></code></p></li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
@@ -465,14 +560,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nesting-and-configurations">Nesting and Configurations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#driving-data">Driving Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-model">Global Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#era5">ERA5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#barra2">BARRA2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#files-on-disk">Files on Disk</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-fields">Output Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nesting-configurations">Nesting Configurations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resolutions">Resolutions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configs">Configs</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-fields-and-science-configuration">Output Fields and Science Configuration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
 </ul>
   </nav></div>
