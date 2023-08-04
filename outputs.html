@@ -136,8 +136,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
-    <p class="title logo__title">Aus2200 Training</p>
   
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -369,6 +375,13 @@ document.write(`
 <h1>Model Outputs<a class="headerlink" href="#model-outputs" title="Permalink to this heading">#</a></h1>
 <p>UM outputs are written out in a propriotary format called ‘fieldsfile’, a description of which is in <a class="reference external" href="https://code.metoffice.gov.uk/doc/um/latest/papers/umdp_F03.pdf">UMDP F03</a>. The primary libraries for working with these files are Iris and Mule.</p>
 <p>Variables within a UM file are referred to by STASH code. STASH codes are split up into several different ‘sections’, for instance prognostic variables that the model is actually simulating are all in section 0. Codes can be referred to in a format like <code class="docutils literal notranslate"><span class="pre">m01s03i236</span></code> for section 3 item 236 (the <code class="docutils literal notranslate"><span class="pre">m</span></code> part is a legacy attribute and is always <code class="docutils literal notranslate"><span class="pre">01</span></code>), or as an integer <code class="docutils literal notranslate"><span class="pre">s*1000</span> <span class="pre">+</span> <span class="pre">i</span></code> like <code class="docutils literal notranslate"><span class="pre">3236</span></code>.</p>
+<p>Output from Aus2200 is based upon BARRA’s output fields. Output is split into the following streams:</p>
+<ul class="simple">
+<li><p><strong>cldrad</strong>: Cloud, precipitation and radar</p></li>
+<li><p><strong>mdl</strong>: Wind, temperature, pressure</p></li>
+<li><p><strong>slv</strong>: Surface variables</p></li>
+<li><p><strong>spec</strong>: Surface variables</p></li>
+</ul>
 <section id="iris">
 <h2>Iris<a class="headerlink" href="#iris" title="Permalink to this heading">#</a></h2>
 <p>Iris is a high-level library for working with climate and weather data, and includes fieldsfile support.</p>
