@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Aus2200 &#8212; Aus2200 Training</title>
+    <title>Account Setup &#8212; Aus2200 Training</title>
   
   
   
@@ -61,10 +61,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'introduction';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'setup';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Account Setup" href="setup.html" />
+    <link rel="next" title="Creating Ancillaries" href="ancillaries.html" />
+    <link rel="prev" title="Aus2200" href="introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -130,7 +131,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="introduction.html">
   
   
   
@@ -143,14 +144,14 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="introduction.html">
                     Aus2200
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Account Setup</a></li>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Account Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ancillaries.html">Creating Ancillaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running the Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputs.html">Model Outputs</a></li>
@@ -226,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/ScottWales/aus2200-training/issues/new?title=Issue%20on%20page%20%2Fintroduction.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ScottWales/aus2200-training/issues/new?title=Issue%20on%20page%20%2Fsetup.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -256,7 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/introduction.ipynb" target="_blank"
+      <li><a href="_sources/setup.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -266,7 +267,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -325,9 +326,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -338,19 +337,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Aus2200</h1>
+    <h1>Account Setup</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rmed">RMED</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -360,25 +351,23 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="aus2200">
-<h1>Aus2200<a class="headerlink" href="#aus2200" title="Permalink to this heading">#</a></h1>
-<p>Aus2200 is a regional configuration of the Unified Model. It simulates the Australian continent with a grid spacing of 0.0198 degrees (approx. 2200m), using RA3 science settings.</p>
-<p>In this tutorial we’ll run a subset of the domain covering the Canberra hail storms in January 2020.</p>
-<section id="rmed">
-<h2>RMED<a class="headerlink" href="#rmed" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://code.metoffice.gov.uk/trac/rmed">RMED</a> is the Unified Model Regional Model Evaluation and Development project, and it is the basis for most regional workflows. RMED provides a number of workflows:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="account-setup">
+<h1>Account Setup<a class="headerlink" href="#account-setup" title="Permalink to this heading">#</a></h1>
+<p>To run the tutorial suites you’ll need a MOSRS Account so that you can download the suites and source code. Request an account from your local sponsor:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://code.metoffice.gov.uk/trac/rmed/wiki/suites/RAS">Regional Ancillary Suite</a></p></li>
-<li><p><a class="reference external" href="https://code.metoffice.gov.uk/trac/rmed/wiki/suites/nesting">Regional Nesting Suite</a></p></li>
-<li><p><a class="reference external" href="https://code.metoffice.gov.uk/trac/rmed/wiki/suites/ensemble">Ensemble Nesting Suite</a></p></li>
-<li><p><a class="reference external" href="https://code.metoffice.gov.uk/trac/rmed/wiki/suites/coupl">Regional Coupled Suite</a></p></li>
-<li><p><a class="reference external" href="https://code.metoffice.gov.uk/trac/rmed/wiki/suites/eval">Regional Evaluation Suite</a></p></li>
+<li><p>Bureau: Next Generation Modelling</p></li>
+<li><p>CLEX: CMS</p></li>
+<li><p>CSRIO:</p></li>
+<li><p>NRI:</p></li>
 </ul>
-<p>Aus2200 makes use of the Regional Ancillary Suite for creating ancillary data (e.g. orography, vegetation) and the Regional Nesting Suite for running the model itself</p>
-<p>These suites are all relocatable to arbitrary domains. The general workflow of the RMED suites is ancillaries are created in the RAS, then one of RNS, ENS or RCS is used to run the model. The model can then be compared against observations using the RES.</p>
-</section>
-<div class="toctree-wrapper compound">
-</div>
+<p>You’ll also need to be a member of the following NCI projects:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://my.nci.org.au/mancini/project/access"><code class="docutils literal notranslate"><span class="pre">access</span></code></a>: UM licensed software, modules and data</p></li>
+<li><p><a class="reference external" href="https://my.nci.org.au/mancini/project/hr22"><code class="docutils literal notranslate"><span class="pre">hr22</span></code></a>: Rose and Cylc software</p></li>
+<li><p><a class="reference external" href="https://my.nci.org.au/mancini/project/ki32"><code class="docutils literal notranslate"><span class="pre">ki32</span></code></a>: Source repository mirrors</p></li>
+<li><p><a class="reference external" href="https://my.nci.org.au/mancini/project/ki32_mosrs"><code class="docutils literal notranslate"><span class="pre">ki32_mosrs</span></code></a>: MOSRS mirrors (requires membership of <code class="docutils literal notranslate"><span class="pre">ki32</span></code> and a MOSRS account)</p></li>
+</ul>
+<p>Cylc at NCI is managed centrally, see <a class="reference external" href="https://opus.nci.org.au/display/DAE/UK+Met+Office+Environment+on+NCI">NCI’s documentation</a>. Contact <a class="reference external" href="mailto:help&#37;&#52;&#48;nci&#46;org&#46;au">help<span>&#64;</span>nci<span>&#46;</span>org<span>&#46;</span>au</a> for assistance.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -390,16 +379,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-analysis3-py"
+            mode: "python"
         },
         kernelOptions: {
-            name: "conda-env-analysis3-py",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-analysis3-py'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -412,12 +401,21 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Aus2200</p>
+      </div>
+    </a>
     <a class="right-next"
-       href="setup.html"
+       href="ancillaries.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Account Setup</p>
+        <p class="prev-next-title">Creating Ancillaries</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -430,20 +428,6 @@ document.write(`
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rmed">RMED</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

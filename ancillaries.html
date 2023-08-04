@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Running the Model" href="running.html" />
-    <link rel="prev" title="Aus2200" href="introduction.html" />
+    <link rel="prev" title="Account Setup" href="setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -151,6 +151,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Account Setup</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating Ancillaries</a></li>
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running the Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputs.html">Model Outputs</a></li>
@@ -374,6 +375,7 @@ document.write(`
 <h2>Defining Domains<a class="headerlink" href="#defining-domains" title="Permalink to this heading">#</a></h2>
 <p>Domains are defined in two layers, regions and resolutions. This allows the domain to be relocatable by just changing the region centre, without having to change the model grid setups.</p>
 <p>At this stage we’re not worried about which nest is inside which, that will get defined in the Regional Nesting Suite.</p>
+<p>Aus2200 domains are named by their grid spacing in ten-thousandths of a degree - <code class="docutils literal notranslate"><span class="pre">d0198</span></code> represents a 0.0198 degree grid spacing in both latitude and longitude.</p>
 <section id="regions">
 <h3>Regions<a class="headerlink" href="#regions" title="Permalink to this heading">#</a></h3>
 <p><strong>Regions</strong> set the primary location of the domain. You can define this either as the domain centre or as the bottom left corner. Regions also control if a rotated grid is being used. Configuration options are prefixed with the region number, e.g. <code class="docutils literal notranslate"><span class="pre">rg01_name</span></code>.</p>
@@ -424,12 +426,12 @@ document.write(`
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 
 <span class="c1"># Draw the region</span>
-<span class="n">centre</span> <span class="o">=</span> <span class="p">[</span><span class="mf">50.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.5</span><span class="p">]</span>
-<span class="n">draw_regn</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">centre</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Regn1&#39;</span><span class="p">)</span>
+<span class="n">centre</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">34.43</span><span class="p">,</span> <span class="mf">147.615</span><span class="p">]</span>
+<span class="n">draw_regn</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">centre</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;aus2200&#39;</span><span class="p">)</span>
 
 <span class="c1"># Draw the resolutions</span>
-<span class="n">draw_res</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">centre</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0135</span><span class="p">,</span> <span class="mf">0.0135</span><span class="p">],</span> <span class="n">npts</span><span class="o">=</span><span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;resn_1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">draw_res</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">centre</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.135</span><span class="p">,</span> <span class="mf">0.135</span><span class="p">],</span> <span class="n">npts</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;resn_2&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">draw_res</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">centre</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0198</span><span class="p">,</span> <span class="mf">0.0198</span><span class="p">],</span> <span class="n">npts</span><span class="o">=</span><span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;era5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">draw_res</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">centre</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0198</span><span class="p">,</span> <span class="mf">0.0198</span><span class="p">],</span> <span class="n">npts</span><span class="o">=</span><span class="p">[</span><span class="mi">450</span><span class="p">,</span> <span class="mi">450</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;d0198&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="s1">&#39;10m&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
@@ -437,7 +439,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ba61f2360e4d5f0e6969769eb69bf889b55f183f4e7c23c820bb62ef4696a296.png" src="_images/ba61f2360e4d5f0e6969769eb69bf889b55f183f4e7c23c820bb62ef4696a296.png" />
+<img alt="_images/72b1eadae6be18081bde7005138f0f33111be38b2522c69ee6c0c8a2032dbe35.png" src="_images/72b1eadae6be18081bde7005138f0f33111be38b2522c69ee6c0c8a2032dbe35.png" />
 </div>
 </div>
 </section>
@@ -475,12 +477,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="introduction.html"
+       href="setup.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Aus2200</p>
+        <p class="prev-next-title">Account Setup</p>
       </div>
     </a>
     <a class="right-next"
