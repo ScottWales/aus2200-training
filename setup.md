@@ -1,11 +1,6 @@
 # Account Setup
 
-To run the tutorial suites you'll need a MOSRS Account so that you can download the suites and source code. Request an account from your local sponsor:
-
- * Bureau: Next Generation Modelling
- * CLEX: CMS
- * CSRIO:
- * NRI:
+To run the tutorial suites you'll need a MOSRS Account so that you can download the suites and source code. Request an account from your [local sponsor](https://opus.nci.org.au/display/DAE/UK+Met+Office+environment+prerequisites)
 
 You'll also need to be a member of the following NCI projects:
 
@@ -18,4 +13,4 @@ You'll also need to be a member of the following NCI projects:
  * [`zz93`](https://my.nci.org.au/mancini/project/zz93): ERA5-land mirror
  * [`nf33`](https://my.nci.org.au/mancini/project/nf33): ACCESS-NRI Training (compute resources for the training event)
  
-Cylc at NCI is managed centrally, see [NCI's documentation](https://opus.nci.org.au/display/DAE/UK+Met+Office+Environment+on+NCI) for instructions on setting it up. Contact help@nci.org.au for assistance.
+Cylc at NCI is managed centrally, see [NCI's documentation](https://opus.nci.org.au/display/DAE/UK+Met+Office+Environment+on+NCI) for instructions on setting it up. Contact help@nci.org.au for assistance with using Cylc or the ARE platform. If you have trouble with the model itself you can ask questions on the [ACCESS Hive Forum](https://forum.access-hive.org.au/latest)

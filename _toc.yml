@@ -4,7 +4,6 @@
 format: jb-book
 root: introduction
 chapters:
-- file: regionalmodelling
 - file: setup
 - file: ancillaries
 - file: running
