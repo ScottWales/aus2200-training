@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Aus2200 Training</title>
+    <title>Further Considerations &#8212; Aus2200 Training</title>
   
   
   
@@ -61,9 +61,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'canberra-demo';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'further-considerations';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Evaluating the Model" href="evaluating.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,14 +155,14 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Account Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ancillaries.html">Creating Ancillaries</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running the Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputs.html">Model Outputs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluating.html">Evaluating the Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="further-considerations.html">Further Considerations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Further Considerations</a></li>
 </ul>
 
     </div>
@@ -233,7 +234,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/ScottWales/aus2200-training/issues/new?title=Issue%20on%20page%20%2Fcanberra-demo.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ScottWales/aus2200-training/issues/new?title=Issue%20on%20page%20%2Ffurther-considerations.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -263,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/canberra-demo.ipynb" target="_blank"
+      <li><a href="_sources/further-considerations.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -273,7 +274,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -345,7 +346,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Further Considerations</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -354,9 +355,12 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-data-resolution">Ancillary Data Resolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-effects">Boundary Effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-resolution-grids">Variable Resolution Grids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-and-io-servers">Decomposition and IO servers</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -367,73 +371,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-<span class="kn">import</span> <span class="nn">iris</span>
-<span class="kn">import</span> <span class="nn">xarray</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">cartopy.io.img_tiles</span> <span class="kn">import</span> <span class="n">OSM</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube_mslp</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">load_cube</span><span class="p">(</span><span class="s1">&#39;~/cylc-run/u-cy369/share/cycle/*/aus2200/d0198/RA3/um/umnsa_spec_*&#39;</span><span class="p">,</span> <span class="s1">&#39;air_pressure_at_sea_level&#39;</span><span class="p">)</span>
-<span class="n">mslp</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span><span class="o">.</span><span class="n">from_iris</span><span class="p">(</span><span class="n">cube_mslp</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/g/data/hh5/public/apps/miniconda3/envs/analysis3-23.01/lib/python3.9/site-packages/iris/fileformats/rules.py:353: UserWarning: Unable to create instance of HybridHeightFactory. The source data contains no field(s) for &#39;orography&#39;.
-  warnings.warn(msg.format(factory=factory_name))
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cube_rain</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">load_cube</span><span class="p">(</span><span class="s1">&#39;~/cylc-run/u-cy369/share/cycle/*/aus2200/d0198/RA3/um/umnsa_spec_*&#39;</span><span class="p">,</span> <span class="s1">&#39;stratiform_rainfall_amount&#39;</span><span class="p">)</span>
-<span class="n">rain</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">DataArray</span><span class="o">.</span><span class="n">from_iris</span><span class="p">(</span><span class="n">cube_rain</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/g/data/hh5/public/apps/miniconda3/envs/analysis3-23.01/lib/python3.9/site-packages/iris/fileformats/rules.py:353: UserWarning: Unable to create instance of HybridHeightFactory. The source data contains no field(s) for &#39;orography&#39;.
-  warnings.warn(msg.format(factory=factory_name))
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
-
-<span class="n">c</span> <span class="o">=</span> <span class="p">[</span><span class="mf">149.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">35.1</span><span class="p">]</span>
-<span class="n">d</span> <span class="o">=</span> <span class="mf">0.5</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">d</span><span class="p">,</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">d</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">d</span><span class="p">,</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">d</span><span class="p">,</span><span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">d</span><span class="p">])</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="n">OSM</span><span class="p">(),</span> <span class="mi">7</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">mslp</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;20200120T11&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
-<span class="n">cs</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">100200</span><span class="p">,</span><span class="mi">100300</span><span class="p">,</span><span class="mi">100400</span><span class="p">,</span><span class="mi">100500</span><span class="p">,</span><span class="mi">100600</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">rain</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;20200120T11&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">data</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">add_colorbar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.98</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;Aus</span><span class="se">\n</span><span class="s2">2200&quot;</span><span class="p">,</span><span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">fontfamily</span><span class="o">=</span><span class="s1">&#39;Ubuntu&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">linespacing</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;logo.png&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/1e6a5ae84761bccfb7e0c663f2648f752760873dea0b369bf28c2735aaf9c7d5.png" src="_images/1e6a5ae84761bccfb7e0c663f2648f752760873dea0b369bf28c2735aaf9c7d5.png" />
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="further-considerations">
+<h1>Further Considerations<a class="headerlink" href="#further-considerations" title="Permalink to this heading">#</a></h1>
+<section id="ancillary-data-resolution">
+<h2>Ancillary Data Resolution<a class="headerlink" href="#ancillary-data-resolution" title="Permalink to this heading">#</a></h2>
+<p>At very high resolutions the resolution of source ancillary datasets can start to become a concern. Check the output of the ancillary suite to make sure that there are no artifacts that could impact the model.</p>
+<p>Normally you want to use the SRTM orography for regional runs, the default orography dataset is very coarse.</p>
+</section>
+<section id="boundary-effects">
+<h2>Boundary Effects<a class="headerlink" href="#boundary-effects" title="Permalink to this heading">#</a></h2>
+<p>There will always be artifacts around the edge of a regional run where the LAM model merges with the lateral boundary conditions. These boundary effects need to be removed from any analysis. Consider a trial run to check the size of the effect with your configuration to make sure the boundary effects do not cover your area of interest.</p>
+</section>
+<section id="variable-resolution-grids">
+<h2>Variable Resolution Grids<a class="headerlink" href="#variable-resolution-grids" title="Permalink to this heading">#</a></h2>
+<p>It’s possible to define a grid where the outer rim is at a lower resolution than the inside, which can reduce the need for intermediate nests. This is used in the UKV and ACCESS-A grids. There is information on MOSRS for <a class="reference external" href="https://code.metoffice.gov.uk/trac/rmed/wiki/suites/RAS/variablegrid">creating variable resolution grids</a>.</p>
+</section>
+<section id="decomposition-and-io-servers">
+<h2>Decomposition and IO servers<a class="headerlink" href="#decomposition-and-io-servers" title="Permalink to this heading">#</a></h2>
+<p>When setting up a new domain it’s important to consider the model performance. You should perform some trial experiments with different processor decompositions in order to find the most efficient setup. Generally more processors will make a job run faster, but the more you add the less effective each increase will be.</p>
+<p>Large grids will also take up a lot of time just writing out data. In this case you can enable the model’s IO servers, dedicated nodes for handling writing out data to disk.</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -444,16 +402,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "conda-env-analysis3-py"
+            mode: "python"
         },
         kernelOptions: {
-            name: "conda-env-analysis3-py",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'conda-env-analysis3-py'</script>
+    <script>kernelName = 'python3'</script>
 
                 </article>
               
@@ -466,6 +424,15 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="evaluating.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Evaluating the Model</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
@@ -483,9 +450,12 @@ document.write(`
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-data-resolution">Ancillary Data Resolution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-effects">Boundary Effects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-resolution-grids">Variable Resolution Grids</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decomposition-and-io-servers">Decomposition and IO servers</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
