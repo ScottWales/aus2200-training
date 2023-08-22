@@ -398,7 +398,7 @@ document.write(`
 <li><p><strong>rot_grid</strong>: True if using a rotated pole (useful at high latitudes)</p></li>
 </ul>
 <p>When rotated pole is enabled, the grid coordinates will be transformed so that the centre of your domain is at 0N 0E in the new coordinate system. At high latitudes this will give much more evenly spaced grid cells.</p>
-<p><img alt="image.png" src="attachment:bc743b8c-f074-4be2-8084-86e22ce61d41.png" /></p>
+<p><img alt="Ancil region" src="_images/ancil-region.png" /></p>
 </section>
 <section id="resolutions">
 <h3>Resolutions<a class="headerlink" href="#resolutions" title="Permalink to this heading">#</a></h3>
@@ -410,7 +410,7 @@ document.write(`
 <li><p><strong>offset</strong>: Offset from the region location</p></li>
 <li><p><strong>levset</strong>: Vertical levels - RAL configurations should use L90_40km (90 vertical levels, max height 40 km)</p></li>
 </ul>
-<p><img alt="image.png" src="attachment:456dc567-ce9b-4226-b163-cea79e252032.png" /></p>
+<p><img alt="Ancil Resolution" src="_images/ancil-resolution.png" /></p>
 </section>
 </section>
 <section id="ancillary-options">
@@ -423,7 +423,12 @@ document.write(`
 <p>At the boundary of the regional domain the model is merged with the driving lateral boundary conditions. The driving data always has to be a bit larger than the target domain, you can’t for instance have an outer nest domain and an inner nest domain share the same edge.</p>
 <p>Boundary data can be saved as a ‘frame’, where the innermost part of the data is cut out leaving only data around the edge. In this case the frame has to cover from the domain’s ‘halo’ to the domain’s ‘rim’ (both configurable in the model’s LBC configuration).</p>
 <p>Here’s some Python code to plot out the region that may be helpful when planning your domain</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">typing</span> <span class="k">as</span> <span class="nn">T</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -469,16 +474,23 @@ document.write(`
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">iris</span>
 <span class="kn">import</span> <span class="nn">iris.plot</span>
 
-<span class="n">frames_se</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">load_cube</span><span class="p">(</span><span class="s1">&#39;/scratch/hc46/saw562/nri-workshop-tutorial/barra-frames/20200119T1800Z/frame_barra-se&#39;</span><span class="p">,</span> <span class="s1">&#39;air_potential_temperature&#39;</span><span class="p">)</span>
+<span class="n">frames_se</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">load_cube</span><span class="p">(</span><span class="s1">&#39;/scratch/nf33/saw562/nri-workshop-tutorial/barra-frames/20200119T1800Z/frame_barra-se&#39;</span><span class="p">,</span> <span class="s1">&#39;air_potential_temperature&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -490,7 +502,7 @@ document.write(`
 <span class="n">plot_region</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="s1">&#39;d0198&#39;</span><span class="p">,</span> <span class="n">centre</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">34.43</span><span class="p">,</span><span class="mf">147.615</span><span class="p">],</span> <span class="n">res</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0198</span><span class="p">,</span><span class="mf">0.0198</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="mi">450</span><span class="p">,</span><span class="mi">450</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="s1">&#39;10m&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -499,9 +511,6 @@ document.write(`
   warnings.warn(
 /g/data/hh5/public/apps/miniconda3/envs/analysis3-23.01/lib/python3.9/site-packages/iris/coords.py:2047: UserWarning: Coordinate &#39;latitude&#39; is not bounded, guessing contiguous bounds.
   warnings.warn(
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x149fe8c4e3a0&gt;
 </pre></div>
 </div>
 <img alt="_images/1873a5340dfef936ec93b211d7ac09b6ec0128aba694d30aa4e46c217aa837e0.png" src="_images/1873a5340dfef936ec93b211d7ac09b6ec0128aba694d30aa4e46c217aa837e0.png" />
@@ -522,14 +531,11 @@ document.write(`
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_global</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="s1">&#39;10m&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x149fe7005250&gt;
-</pre></div>
-</div>
 <img alt="_images/e1f544e8fa215de2384698172c7daa66bfc2a7499a74ce875056dd105188cecb.png" src="_images/e1f544e8fa215de2384698172c7daa66bfc2a7499a74ce875056dd105188cecb.png" />
 </div>
 </div>
