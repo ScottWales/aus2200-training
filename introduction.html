@@ -371,7 +371,8 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <p>Aus2200 is a regional configuration of the Unified Model. It simulates the Australian continent with a grid spacing of 0.0198 degrees (approx. 2200m), using RA3 science settings.</p>
-<p>In this tutorial we’ll run a subset of the domain covering the Canberra hail storms in January 2020.</p>
+<p>In this tutorial we’ll run a subset of the domain covering the <a class="reference external" href="https://knowledge.aidr.org.au/resources/hailstorm-act-january-2020/">Canberra hail storms</a> in January 2020.</p>
+<p>The UM supports one-way nesting of models, where the inner domain gets initial and boundary conditions from an outer domain, but the outer domain is not affected by what’s happening in the inner domain. The driving data can come from either a previous UM run’s output or from <a class="reference external" href="https://code.metoffice.gov.uk/doc/um/latest/papers/umdp_303.pdf">GRIB-formatted data</a>.</p>
 <section id="rmed">
 <h2>RMED<a class="headerlink" href="#rmed" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://code.metoffice.gov.uk/trac/rmed">RMED</a> is the Unified Model Regional Model Evaluation and Development project, and it is the basis for most regional workflows. RMED provides a number of workflows:</p>
