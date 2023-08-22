@@ -356,6 +356,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-to-change-with-resolution">Parameters to change with resolution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-data-resolution">Ancillary Data Resolution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-effects">Boundary Effects</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-resolution-grids">Variable Resolution Grids</a></li>
@@ -373,6 +374,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="further-considerations">
 <h1>Further Considerations<a class="headerlink" href="#further-considerations" title="Permalink to this heading">#</a></h1>
+<section id="parameters-to-change-with-resolution">
+<h2>Parameters to change with resolution<a class="headerlink" href="#parameters-to-change-with-resolution" title="Permalink to this heading">#</a></h2>
+<p>When using RAL3 science the only parameters that need to change with resolution are the model timestep and the radiation timesteps, both in the ‘configs’ panel. The model timestep must evenly divide all other timesteps, including the radiation timestep, LBC cycle time and the cycle length.</p>
+</section>
 <section id="ancillary-data-resolution">
 <h2>Ancillary Data Resolution<a class="headerlink" href="#ancillary-data-resolution" title="Permalink to this heading">#</a></h2>
 <p>At very high resolutions the resolution of source ancillary datasets can start to become a concern. Check the output of the ancillary suite to make sure that there are no artifacts that could impact the model.</p>
@@ -451,6 +456,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-to-change-with-resolution">Parameters to change with resolution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ancillary-data-resolution">Ancillary Data Resolution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-effects">Boundary Effects</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-resolution-grids">Variable Resolution Grids</a></li>

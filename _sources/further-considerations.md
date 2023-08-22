@@ -1,5 +1,9 @@
 # Further Considerations
 
+## Parameters to change with resolution
+
+When using RAL3 science the only parameters that need to change with resolution are the model timestep and the radiation timesteps, both in the 'configs' panel. The model timestep must evenly divide all other timesteps, including the radiation timestep, LBC cycle time and the cycle length.
+
 ## Ancillary Data Resolution
 
 At very high resolutions the resolution of source ancillary datasets can start to become a concern. Check the output of the ancillary suite to make sure that there are no artifacts that could impact the model.
