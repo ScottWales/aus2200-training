@@ -14,3 +14,21 @@ You'll also need to be a member of the following NCI projects:
  * [`nf33`](https://my.nci.org.au/mancini/project/nf33): ACCESS-NRI Training (compute resources for the training event)
  
 Cylc at NCI is managed centrally, see [NCI's documentation](https://opus.nci.org.au/display/DAE/UK+Met+Office+Environment+on+NCI) for instructions on setting it up. Contact help@nci.org.au for assistance with using Cylc or the ARE platform. If you have trouble with the model itself you can ask questions on the [ACCESS Hive Forum](https://forum.access-hive.org.au/latest)
+
+First start up a VDI session at https://are.nci.org.au, using the settings:
+
+```
+Walltime:       4
+Queue:          normalbw
+Compute Size:   small
+Project:        nf33
+Storage:        gdata/access+gdata/hr22+gdata/ki32+gdata/hh5+gdata/rt52+gdata/zz93
+```
+
+Once your VDI session has started open a terminal and load the Rose/Cylc environment with
+```
+module purge
+module use /g/data/hr22/modulefiles
+module load pbs cylc7
+mosrs-auth
+```
