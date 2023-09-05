@@ -374,6 +374,21 @@ document.write(`
 <li><p><a class="reference external" href="https://my.nci.org.au/mancini/project/nf33"><code class="docutils literal notranslate"><span class="pre">nf33</span></code></a>: ACCESS-NRI Training (compute resources for the training event)</p></li>
 </ul>
 <p>Cylc at NCI is managed centrally, see <a class="reference external" href="https://opus.nci.org.au/display/DAE/UK+Met+Office+Environment+on+NCI">NCI’s documentation</a> for instructions on setting it up. Contact <a class="reference external" href="mailto:help&#37;&#52;&#48;nci&#46;org&#46;au">help<span>&#64;</span>nci<span>&#46;</span>org<span>&#46;</span>au</a> for assistance with using Cylc or the ARE platform. If you have trouble with the model itself you can ask questions on the <a class="reference external" href="https://forum.access-hive.org.au/latest">ACCESS Hive Forum</a></p>
+<p>First start up a VDI session at <a class="reference external" href="https://are.nci.org.au">https://are.nci.org.au</a>, using the settings:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Walltime</span><span class="p">:</span>       <span class="mi">4</span>
+<span class="n">Queue</span><span class="p">:</span>          <span class="n">normalbw</span>
+<span class="n">Compute</span> <span class="n">Size</span><span class="p">:</span>   <span class="n">small</span>
+<span class="n">Project</span><span class="p">:</span>        <span class="n">nf33</span>
+<span class="n">Storage</span><span class="p">:</span>        <span class="n">gdata</span><span class="o">/</span><span class="n">access</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">hr22</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">ki32</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">hh5</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">rt52</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">zz93</span>
+</pre></div>
+</div>
+<p>Once your VDI session has started open a terminal and load the Rose/Cylc environment with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
+<span class="n">module</span> <span class="n">use</span> <span class="o">/</span><span class="n">g</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">hr22</span><span class="o">/</span><span class="n">modulefiles</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">pbs</span> <span class="n">cylc7</span>
+<span class="n">mosrs</span><span class="o">-</span><span class="n">auth</span>
+</pre></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
