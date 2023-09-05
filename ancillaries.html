@@ -160,6 +160,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Account Setup</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Creating Ancillaries</a></li>
 
+
+
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running the Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputs.html">Model Outputs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluating.html">Evaluating the Model</a></li>
@@ -368,6 +370,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rotated-poles">Rotated Poles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cap-and-ants">CAP and ANTS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ancil-files">Ancil files</a></li>
 </ul>
 
             </nav>
@@ -383,7 +387,7 @@ document.write(`
   <section id="creating-ancillaries">
 <h1>Creating Ancillaries<a class="headerlink" href="#creating-ancillaries" title="Permalink to this heading">#</a></h1>
 <p>The <a class="reference external" href="https://code.metoffice.gov.uk/trac/rmed/wiki/suites/RAS">Regional Ancillary Suite</a> is used to set domains and create ancillary data for regional models.</p>
-<p>Suite <strong>u-cy368</strong> has been set up to create ancillaries for our sample domain. Check out the suite with <code class="docutils literal notranslate"><span class="pre">rosie</span> <span class="pre">checkout</span></code> and open it in <code class="docutils literal notranslate"><span class="pre">rose</span> <span class="pre">edit</span></code>. Make sure to set the SITE to <code class="docutils literal notranslate"><span class="pre">nci-gadi</span></code> in ‘General Run Options’.</p>
+<p>Suite <strong>u-cy368</strong> has been set up to create ancillaries for our sample domain. Check out the suite with <code class="docutils literal notranslate"><span class="pre">rosie</span> <span class="pre">checkout</span> <span class="pre">u-cy368</span></code> and open it in <code class="docutils literal notranslate"><span class="pre">rose</span> <span class="pre">edit</span></code>. Make sure to set the SITE to <code class="docutils literal notranslate"><span class="pre">nci-gadi</span></code> in ‘General Run Options’.</p>
 <section id="defining-domains">
 <h2>Defining Domains<a class="headerlink" href="#defining-domains" title="Permalink to this heading">#</a></h2>
 <p>Domains are defined in two layers, regions and resolutions. This allows the domain to be relocatable by just changing the region centre, without having to change the model grid setups.</p>
@@ -541,6 +545,45 @@ document.write(`
 </div>
 </div>
 </section>
+<section id="cap-and-ants">
+<h1>CAP and ANTS<a class="headerlink" href="#cap-and-ants" title="Permalink to this heading">#</a></h1>
+<p>Ancillary files are created from high-resolution source data using two tools, <a class="reference external" href="https://code.metoffice.gov.uk/doc/ancil/ancil9.1/index.html">CAP</a> and <a class="reference external" href="https://code.metoffice.gov.uk/doc/ancil/ants/latest/index.html">ANTS</a>. The Met Office are in the process of moving all of their ancillary generation to the python-based ANTS tool, however it doesn’t yet support all ancillary types.</p>
+</section>
+<section id="ancil-files">
+<h1>Ancil files<a class="headerlink" href="#ancil-files" title="Permalink to this heading">#</a></h1>
+<p>The RAS creates the following ancillary files under <code class="docutils literal notranslate"><span class="pre">~/cylc-run/u-cy368/share/data/ancils</span></code>. You can manually edit the data in the files if needed using <a class="reference external" href="https://code.metoffice.gov.uk/doc/ancil/ants/latest/index.html">ANTS</a>.</p>
+<ul class="simple">
+<li><p>orog_srtm: High-resolution orography</p></li>
+<li></li>
+</ul>
+<p>qrclim.bio: Biogenic aerosol climatologyg*
+<a class="reference external" href="http://qrclim.bi">qrclim.bi</a>: Biomass burning aerosol climatologyo* m
+qrclim.b: Black carbon (soot) aerosol climatologyl* ck
+qrclim.: Dust aerosol climatologyd* ust
+qrclim: Land-surface albedo.* land
+qrcli: Organic carbon from fossil fuel climatologym* .ocff
+qrcli: Ozone climatologym* .ozone
+qr: Chlorophyll climatologyc* lim.sea
+qrcl: Sea ice climatologyi* m.seaice
+q: Soil moisture and snow climatologyr* clim.smow
+: Sea salt aerosol climatologyq* rclim.sslt: Sea surface temperature climatology
+*
+qrclim.sst: Sulphate aerosol climatology
+*
+qrclim.sulp
+qrparm.* MORUSES.morph: Large scale hydrology TOP-index
+*
+qrparm.hyd: Lake maskt* op
+qrparm.: Land-sea maskk*
+<a class="reference external" href="http://qrparm.ma">qrparm.ma</a>: Orographys* k_cci
+qrparm.: Mean orographyo* rog
+qrparm: Soil parameters.* <a class="reference external" href="http://orog.mn">orog.mn</a>
+qrparm.: Soil dustl* .dust
+qrparm.s: Disturbed fraction of vegetationo* il_cci
+qrparm.: Vegetation fractions_* pre_c4
+qrparm.: Vegetation functional types.veg.func
+qrparm.veg.func_igbp</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -620,6 +663,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rotated-poles">Rotated Poles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cap-and-ants">CAP and ANTS</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ancil-files">Ancil files</a></li>
 </ul>
 
   </nav></div>
