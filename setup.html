@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Account Setup &#8212; Aus2200 Training</title>
+    <title>Setup &#8212; Aus2200 Training</title>
   
   
   
@@ -157,7 +157,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Account Setup</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ancillaries.html">Creating Ancillaries</a></li>
 
 
@@ -336,7 +336,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -347,11 +349,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Account Setup</h1>
+    <h1>Setup</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounts">Accounts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vdi-session">VDI Session</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -361,8 +372,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="account-setup">
-<h1>Account Setup<a class="headerlink" href="#account-setup" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="setup">
+<h1>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h1>
+<p>This tutorial is made up of Jupyter notebooks. You can view them as a website at <a class="reference external" href="https://scottwales.github.io/aus2200-training">https://scottwales.github.io/aus2200-training</a>, or if you like you can download them from <a class="github reference external" href="https://github.com/scottwales/aus2200-training">scottwales/aus2200-training</a>.</p>
+<section id="accounts">
+<h2>Accounts<a class="headerlink" href="#accounts" title="Permalink to this heading">#</a></h2>
 <p>To run the tutorial suites you’ll need a MOSRS Account so that you can download the suites and source code. Request an account from your <a class="reference external" href="https://opus.nci.org.au/display/DAE/UK+Met+Office+environment+prerequisites">local sponsor</a></p>
 <p>You’ll also need to be a member of the following NCI projects:</p>
 <ul class="simple">
@@ -376,7 +390,10 @@ document.write(`
 <li><p><a class="reference external" href="https://my.nci.org.au/mancini/project/nf33"><code class="docutils literal notranslate"><span class="pre">nf33</span></code></a>: ACCESS-NRI Training (compute resources for the training event)</p></li>
 </ul>
 <p>Cylc at NCI is managed centrally, see <a class="reference external" href="https://opus.nci.org.au/display/DAE/UK+Met+Office+Environment+on+NCI">NCI’s documentation</a> for instructions on setting it up. Contact <a class="reference external" href="mailto:help&#37;&#52;&#48;nci&#46;org&#46;au">help<span>&#64;</span>nci<span>&#46;</span>org<span>&#46;</span>au</a> for assistance with using Cylc or the ARE platform. If you have trouble with the model itself you can ask questions on the <a class="reference external" href="https://forum.access-hive.org.au/latest">ACCESS Hive Forum</a></p>
-<p>First start up a VDI session at <a class="reference external" href="https://are.nci.org.au">https://are.nci.org.au</a>, using the settings:</p>
+</section>
+<section id="vdi-session">
+<h2>VDI Session<a class="headerlink" href="#vdi-session" title="Permalink to this heading">#</a></h2>
+<p>Start up a VDI session at <a class="reference external" href="https://are.nci.org.au">https://are.nci.org.au</a>, using the settings:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Walltime</span><span class="p">:</span>       <span class="mi">4</span>
 <span class="n">Queue</span><span class="p">:</span>          <span class="n">normalbw</span>
 <span class="n">Compute</span> <span class="n">Size</span><span class="p">:</span>   <span class="n">small</span>
@@ -384,13 +401,14 @@ document.write(`
 <span class="n">Storage</span><span class="p">:</span>        <span class="n">gdata</span><span class="o">/</span><span class="n">access</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">hr22</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">ki32</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">hh5</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">rt52</span><span class="o">+</span><span class="n">gdata</span><span class="o">/</span><span class="n">zz93</span>
 </pre></div>
 </div>
-<p>Once your VDI session has started open a terminal and load the Rose/Cylc environment with</p>
+<p>Once your VDI session has started open a terminal and load the Rose/Cylc environment with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span>
 <span class="n">module</span> <span class="n">use</span> <span class="o">/</span><span class="n">g</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">hr22</span><span class="o">/</span><span class="n">modulefiles</span>
 <span class="n">module</span> <span class="n">load</span> <span class="n">pbs</span> <span class="n">cylc7</span>
 <span class="n">mosrs</span><span class="o">-</span><span class="n">auth</span>
 </pre></div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -451,6 +469,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accounts">Accounts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vdi-session">VDI Session</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

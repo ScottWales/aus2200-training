@@ -1,4 +1,8 @@
-# Account Setup
+# Setup
+
+This tutorial is made up of Jupyter notebooks. You can view them as a website at https://scottwales.github.io/aus2200-training, or if you like you can download them from https://github.com/scottwales/aus2200-training.
+
+## Accounts
 
 To run the tutorial suites you'll need a MOSRS Account so that you can download the suites and source code. Request an account from your [local sponsor](https://opus.nci.org.au/display/DAE/UK+Met+Office+environment+prerequisites)
 
@@ -15,7 +19,9 @@ You'll also need to be a member of the following NCI projects:
  
 Cylc at NCI is managed centrally, see [NCI's documentation](https://opus.nci.org.au/display/DAE/UK+Met+Office+Environment+on+NCI) for instructions on setting it up. Contact help@nci.org.au for assistance with using Cylc or the ARE platform. If you have trouble with the model itself you can ask questions on the [ACCESS Hive Forum](https://forum.access-hive.org.au/latest)
 
-First start up a VDI session at https://are.nci.org.au, using the settings:
+## VDI Session
+
+Start up a VDI session at https://are.nci.org.au, using the settings:
 
 ```
 Walltime:       4
@@ -25,7 +31,7 @@ Project:        nf33
 Storage:        gdata/access+gdata/hr22+gdata/ki32+gdata/hh5+gdata/rt52+gdata/zz93
 ```
 
-Once your VDI session has started open a terminal and load the Rose/Cylc environment with
+Once your VDI session has started open a terminal and load the Rose/Cylc environment with:
 ```
 module purge
 module use /g/data/hr22/modulefiles
