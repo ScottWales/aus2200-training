@@ -162,6 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running the Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="outputs.html">Model Outputs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluating.html">Evaluating the Model</a></li>
@@ -372,6 +373,7 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rotated-poles">Rotated Poles</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cap-and-ants">CAP and ANTS</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ancil-files">Ancil files</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-ancillaries">Editing Ancillaries</a></li>
 </ul>
 
             </nav>
@@ -480,6 +482,11 @@ document.write(`
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matplotlib is building the font cache; this may take a moment.
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -512,13 +519,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/g/data/hh5/public/apps/miniconda3/envs/analysis3-23.01/lib/python3.9/site-packages/iris/coords.py:2047: UserWarning: Coordinate &#39;longitude&#39; is not bounded, guessing contiguous bounds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/g/data/hh5/public/apps/miniconda3/envs/analysis3-23.04/lib/python3.9/site-packages/iris/coords.py:2070: UserWarning: Coordinate &#39;longitude&#39; is not bounded, guessing contiguous bounds.
   warnings.warn(
-/g/data/hh5/public/apps/miniconda3/envs/analysis3-23.01/lib/python3.9/site-packages/iris/coords.py:2047: UserWarning: Coordinate &#39;latitude&#39; is not bounded, guessing contiguous bounds.
+/g/data/hh5/public/apps/miniconda3/envs/analysis3-23.04/lib/python3.9/site-packages/iris/coords.py:2070: UserWarning: Coordinate &#39;latitude&#39; is not bounded, guessing contiguous bounds.
   warnings.warn(
 </pre></div>
 </div>
-<img alt="_images/1873a5340dfef936ec93b211d7ac09b6ec0128aba694d30aa4e46c217aa837e0.png" src="_images/1873a5340dfef936ec93b211d7ac09b6ec0128aba694d30aa4e46c217aa837e0.png" />
+<img alt="_images/c52a566abfcbd1267d51b3843d589d4e9e7c1b0b66d70900d9e8ba3cf47e3a48.png" src="_images/c52a566abfcbd1267d51b3843d589d4e9e7c1b0b66d70900d9e8ba3cf47e3a48.png" />
 </div>
 </div>
 </section>
@@ -541,7 +548,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e1f544e8fa215de2384698172c7daa66bfc2a7499a74ce875056dd105188cecb.png" src="_images/e1f544e8fa215de2384698172c7daa66bfc2a7499a74ce875056dd105188cecb.png" />
+<img alt="_images/75231a0ea2910dc17d6b0450b5e283adb656b26ebaa2ef506a1708005877d9d1.png" src="_images/75231a0ea2910dc17d6b0450b5e283adb656b26ebaa2ef506a1708005877d9d1.png" />
 </div>
 </div>
 </section>
@@ -581,13 +588,44 @@ document.write(`
 .veg.func
 qrparm.veg.func_igbp</p></li>
 </ul>
+</section>
+<section id="editing-ancillaries">
+<h1>Editing Ancillaries<a class="headerlink" href="#editing-ancillaries" title="Permalink to this heading">#</a></h1>
+<p>You can edit ancilliaries in Python using the ANTS package. ANTS is based on Iris, and represents ancillaries as Iris cubes.</p>
+<p>Load the most recent version of ANTS with</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>use<span class="w"> </span>/g/data/access/ngm/modules
+module<span class="w"> </span>load<span class="w"> </span>ants
+</pre></div>
+</div>
+<p>An example of editing the land-sea mask is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ants</span>
 
 <span class="n">cubes</span> <span class="o">=</span> <span class="n">ants</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;/home/562/saw562/cylc-run/u-cy368/share/data/ancils/aus2200/d0198/qrparm.mask&#39;</span><span class="p">)</span>
-<span class="n">cubes</span><span class="o">.</span><span class="n">extract_cube</span><span class="p">(</span><span class="s1">&#39;land_binary_mask&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">300</span><span class="p">:</span><span class="mi">350</span><span class="p">,</span><span class="mi">300</span><span class="p">:</span><span class="mi">350</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">cubes</span><span class="o">.</span><span class="n">extract_cube</span><span class="p">(</span><span class="s1">&#39;land_area_fraction&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">300</span><span class="p">:</span><span class="mi">350</span><span class="p">,</span><span class="mi">300</span><span class="p">:</span><span class="mi">350</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">cubes</span><span class="o">.</span><span class="n">extract_strict</span><span class="p">(</span><span class="s1">&#39;land_binary_mask&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">300</span><span class="p">:</span><span class="mi">350</span><span class="p">,</span><span class="mi">300</span><span class="p">:</span><span class="mi">350</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">cubes</span><span class="o">.</span><span class="n">extract_strict</span><span class="p">(</span><span class="s1">&#39;land_area_fraction&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">300</span><span class="p">:</span><span class="mi">350</span><span class="p">,</span><span class="mi">300</span><span class="p">:</span><span class="mi">350</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">ants</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">cubes</span><span class="p">,</span> <span class="s1">&#39;/home/562/saw562/cylc-run/u-cy368/share/data/ancils/aus2200/d0198/qrparm.mask.edited&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+<p>You should check the ancillary file to make sure the edit is what you wanted:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">load_cube</span><span class="p">(</span><span class="s1">&#39;/home/562/saw562/cylc-run/u-cy368/share/data/ancils/aus2200/d0198/qrparm.mask.edited&#39;</span><span class="p">,</span> <span class="s1">&#39;land_binary_mask&#39;</span><span class="p">)</span>
+<span class="n">iris</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/g/data/hh5/public/apps/miniconda3/envs/analysis3-23.04/lib/python3.9/site-packages/iris/coords.py:2070: UserWarning: Coordinate &#39;longitude&#39; is not bounded, guessing contiguous bounds.
+  warnings.warn(
+/g/data/hh5/public/apps/miniconda3/envs/analysis3-23.04/lib/python3.9/site-packages/iris/coords.py:2070: UserWarning: Coordinate &#39;latitude&#39; is not bounded, guessing contiguous bounds.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;cartopy.mpl.geocollection.GeoQuadMesh at 0x153f3a47e730&gt;
+</pre></div>
+</div>
+<img alt="_images/67ff15a2ed58e1c00392b983f0f74db4756601f52b1651823d3646da1c22ca81.png" src="_images/67ff15a2ed58e1c00392b983f0f74db4756601f52b1651823d3646da1c22ca81.png" />
+</div>
 </div>
 </section>
 
@@ -671,6 +709,7 @@ qrparm.veg.func_igbp</p></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rotated-poles">Rotated Poles</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cap-and-ants">CAP and ANTS</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ancil-files">Ancil files</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-ancillaries">Editing Ancillaries</a></li>
 </ul>
 
   </nav></div>
